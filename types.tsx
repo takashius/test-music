@@ -15,8 +15,9 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: undefined;
-  NotFound: undefined;
+  Home: undefined;
+  ChannelDetail: ChannelProps;
+  PlayerScreen: AudioProps;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -33,3 +34,32 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
 >;
+
+
+
+export type Channel = {
+  id: string;
+  title: string;
+  urls: {
+    logo_image: {
+      original: string
+    }
+  };
+}
+
+export type Audio = {
+  id: string;
+  title: string;
+  urls: {
+    wave_img: string,
+    high_mp3: string
+  };
+}
+
+export type ChannelProps = {
+  channel: Channel,
+}
+
+export type AudioProps = {
+  audioDetail: Audio,
+}
